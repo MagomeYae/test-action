@@ -39,7 +39,7 @@ jobs:
           fi
           echo "prerelease: $PRERELEASE"
           echo "::set-output name=bin::target/release/$BIN"
-          echo "::set-output prerelease=$PRERELEASE"
+          echo "::set-output prerelease=${{ toJSON($PRERELEASE) }}"
       # - uses: actions/upload-artifact@v2
       #   with:
       #     name: artifact
