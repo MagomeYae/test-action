@@ -48,6 +48,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           #files: ${{ steps.rename.outputs.bin }}
-          prerelease: true
+          prerelease: ${{ steps.rename.outputs.prerelease }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
