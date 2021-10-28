@@ -32,12 +32,7 @@ jobs:
         id: rename
         shell: bash
         run: |
-          if [[ $GITHUB_REF == *"beta"* ]]; then
-            PRERELEASE=true
-          else
-            PRERELEASE=false
-          fi
-          echo "::set-output name=prerelease::$PRERELEASE"
+          echo "::set-output name=prerelease::$(if [[ $GITHUB_REF == *"beta"* ]]; then echo true; else echo false; fi)"
           echo "::set-output name=bin::target/release/$BIN"
       # - uses: actions/upload-artifact@v2
       #   with:
