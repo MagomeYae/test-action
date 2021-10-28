@@ -33,13 +33,11 @@ jobs:
         shell: bash
         run: |
           if [[ $GITHUB_REF == *"beta"* ]]; then
-            PRERELEASE=true
+            echo "::set-output prerelease=${{ toJSON(true) }}"
           else
-            PRERELEASE=false
+            echo "::set-output prerelease=${{ toJSON(false) }}"
           fi
-          echo "prerelease: $PRERELEASE"
           echo "::set-output name=bin::target/release/$BIN"
-          echo "::set-output prerelease=${{ toJSON($PRERELEASE) }}"
       # - uses: actions/upload-artifact@v2
       #   with:
       #     name: artifact
