@@ -34,9 +34,9 @@ jobs:
         run: |
           if [[ $GITHUB_REF == *"beta"* ]]; then
             echo "pre"
-            echo "::set-output prerelease=${{ toJSON(true) }}"
+            echo "::set-output name=prerelease::${{ toJSON(true) }}"
           else
-            echo "::set-output prerelease=${{ toJSON(false) }}"
+            echo "::set-output name=prerelease::${{ toJSON(false) }}"
           fi
           echo "::set-output name=bin::target/release/$BIN"
       # - uses: actions/upload-artifact@v2
