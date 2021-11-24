@@ -19,9 +19,6 @@ jobs:
         shell: bash
         run: |
           echo "::set-output name=date::$(date +%Y%m%d%H%M)"
-      - shell: bash
-        run: |
-          touch $(date +%s)
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
