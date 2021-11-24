@@ -17,10 +17,8 @@ jobs:
       - uses: actions/checkout@v2
       - shell: bash
         run: |
-          pwd
-          ls
           git submodule update --init
-          git -C "repo/toy" pull
+          git -C "repo/toys" pull
           git -C "repo/status-upstream.rs" pull
       - id: get_env
         shell: bash
