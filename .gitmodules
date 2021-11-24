@@ -1,0 +1,3 @@
+[submodule "delete-message-notifier"]
+	path = delete-message-notifier
+	url = https://github.com/KunoiSayami/delete-message-notifier
