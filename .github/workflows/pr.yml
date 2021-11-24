@@ -18,8 +18,8 @@ jobs:
       - shell: bash
         run: |
           git submodule update --init
-          git -C "repo/toys" pull
-          git -C "repo/status-upstream.rs" pull
+          git -C "repo/toys" pull origin master
+          git -C "repo/status-upstream.rs" pull origin master
       - id: get_env
         shell: bash
         run: |
