@@ -28,7 +28,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          author: Github <noreply@github.com>
+          author: GitHub Action <${{ github.actor }}+github-actions[bot]@users.noreply.github.com>
           commit-message: 'test ${{ steps.get_env.outputs.date }}'
           title: Update repo
           delete-branch: true
