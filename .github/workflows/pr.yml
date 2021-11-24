@@ -15,10 +15,11 @@ jobs:
     runs-on: ${{ matrix.job.os }}
     steps:
       - uses: actions/checkout@v2
-      - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
       - shell: bash
         run: |
+          pwd
+          ls
+          git submodule update --init
           git -C "repo/toy" pull
           git -C "repo/status-upstream.rs" pull
       - id: get_env
