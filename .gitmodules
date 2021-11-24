@@ -4,3 +4,6 @@
 [submodule "repo/toys"]
 	path = repo/toys
 	url = https://github.com/KunoiSayami/toys
+[submodule "repo/status-upstream.rs"]
+	path = repo/status-upstream.rs
+	url = https://github.com/KunoiSayami/status-upstream.rs
