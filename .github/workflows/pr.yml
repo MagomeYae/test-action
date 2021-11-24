@@ -1,5 +1,7 @@
 name: Test pull request
 
+on: push
+
 jobs:
   build:
     strategy:
