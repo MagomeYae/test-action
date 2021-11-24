@@ -15,8 +15,18 @@ jobs:
     runs-on: ${{ matrix.job.os }}
     steps:
       - uses: actions/checkout@v2
+      - id: get_env
+        shell: bash
+        run: |
+          echo "::set-output name=date::$(date +%Y%m%d%H%M)"
       - shell: bash
         run: |
           touch $(date +%s)
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        with:
+          author: Github <noreply@github.com>
+          commit-message: 'test ${{ steps.get_env.outputs.date }}'
+          title: Update repo
+          delete-branch: true
+          branch: testci/${{ steps.get_env.outputs.date }}
