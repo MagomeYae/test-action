@@ -1,3 +1,6 @@
 [submodule "delete-message-notifier"]
 	path = delete-message-notifier
 	url = https://github.com/KunoiSayami/delete-message-notifier
+[submodule "repo/toys"]
+	path = repo/toys
+	url = https://github.com/KunoiSayami/toys
