@@ -26,18 +26,10 @@ jobs:
         id: get_env
         shell: bash
         run: |
-          echo "::set-output name=date::$(date +%Y%m%d%H%M)"
-          if [ ! -z "$(git branch -r | grep 'update/')" ]; then
-            CREATE=0
-          else
-            CREATE=1
+          git add .
+          if [ ! -z "$(git --no-pager diff --staged)" ]; then
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email '<41898282+github-actions[bot]@users.noreply.github.com>'
+            git commit -m "$(date +%Y%m%d%H%M)$(git diff --name-only | sed -e 's|^repo/|* |')" -a
+            git push
           fi
-          BODY=$(git diff --name-only | sed -e 's|^repo/|* |')
-          echo "::set-output name=body::${BODY//$'\n'/'%0A'}"
-          echo "::set-output name=create::$CREATE"
-      - shell: bash
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '<41898282+github-actions[bot]@users.noreply.github.com>'
-          git commit -m "$(date +%Y%m%d%H%M)\n$(echo -e 't\ns\ne\nt\ntest')" -a
-          git push
