@@ -35,13 +35,9 @@ jobs:
           BODY=$(git diff --name-only | sed -e 's|^repo/|* |')
           echo "::set-output name=body::${BODY//$'\n'/'%0A'}"
           echo "::set-output name=create::$CREATE"
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        if: ${{ steps.get_env.outputs.create == 1 }}
-        with:
-          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          commit-message: 'Auto update aur repository ${{ steps.get_env.outputs.date }}'
-          title: Update aur repository
-          delete-branch: true
-          branch: update/aur-${{ steps.get_env.outputs.date }}
-          body: "Update packages:\n${{ steps.get_env.outputs.body }}"
+      - shell: bash
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '<41898282+github-actions[bot]@users.noreply.github.com>'
+          git commit -m "$(date +%Y%m%d%H%M)\n$(echo -e 't\ns\ne\nt\ntest')" -a
+          git push
