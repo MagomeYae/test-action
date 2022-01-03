@@ -18,10 +18,6 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           git fetch
           git submodule update --init
-      - name: Check updates
-        shell: bash
-        run: |
-          date +%s > test
       - name: Set environments
         id: get_env
         shell: bash
